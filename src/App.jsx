@@ -1,8 +1,10 @@
+import Navbar from "./components/elements/Navbar"
+
 function App() {
 
   return (
     <>
-      <p className="text-6xl font-bold mb-5 text-red-500">Hello World!</p>
+      <Navbar/>
     </>
   )
 }
