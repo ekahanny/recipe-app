@@ -4,6 +4,7 @@ import Category from "./components/fragments/Category";
 import { useEffect, useState } from "react";
 import getDataFromAPI from "./services/category.service";
 import AdditionalArticle from "./components/fragments/AdditionalArticle";
+import Footer from "./components/elements/Footer";
 
 function App() {
 
@@ -48,6 +49,9 @@ function App() {
           ))}
         </div>
       </div>
+
+      {/* Footer */}
+      <Footer/>
 
 
     </>
