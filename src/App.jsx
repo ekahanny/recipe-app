@@ -34,11 +34,11 @@ function App() {
       </div>
       
       {/* Categories */}
-      <div className="px-10 pb-5">
+      <div className="px-16 pb-5">
         <h1 className="text-3xl flex justify-center items-center font-bold mt-5 ml-6 bg-orange-300 p-4 rounded-full ">What to cook?</h1>
-        <div className="grid grid-cols-7 gap-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-4 mt-8">
           {categories.map((category) => (
-            <Category key={category.idCategory} category={category.strCategory}/>
+            <Category key={category.idCategory} category={category.strCategory} thumbnail={category.strCategoryThumb}/>
           ))}
         </div>
       </div>
