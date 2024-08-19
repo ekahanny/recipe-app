@@ -3,6 +3,7 @@ import './App.css';  // Import your CSS file
 import Category from "./components/fragments/Category";
 import { useEffect, useState } from "react";
 import getDataFromAPI from "./services/category.service";
+import AdditionalArticle from "./components/fragments/AdditionalArticle";
 
 function App() {
 
@@ -32,6 +33,11 @@ function App() {
           Explore Culinary <h1 className="text-orange-300 mt-3 italic">Delights.</h1> 
         </h1>
       </div>
+
+      {/* Additional Article */}
+      <div className="px-8 my-3">
+        <AdditionalArticle/>
+      </div>
       
       {/* Categories */}
       <div className="px-16 pb-5">
@@ -42,6 +48,8 @@ function App() {
           ))}
         </div>
       </div>
+
+
     </>
   );
 }

@@ -1,8 +1,4 @@
-
-
 const Category = ({ category, thumbnail}) => {
-
-
     return (
         <div className="flex flex-col items-center">
             <button>
