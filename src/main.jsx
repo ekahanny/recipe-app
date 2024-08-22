@@ -11,7 +11,7 @@ const router = createBrowserRouter([
     element: <App />
   },
   {
-    path: "/category-detail",
+    path: "/category-detail/:category",
     element: <CategoryDetail />
   }
 ])

@@ -1,9 +1,11 @@
+import Logo from "../../assets/my-recipes-logo.png"
+
 const Navbar = () => {
     return (
 <div className="navbar bg-orange-300 p-5 h-[100px] flex justify-center">
   <div className="flex-1">
     <a className="">
-        <img src="src/assets/my-recipes-logo.png" alt="" className="w-28 h-28 -mt-2" />
+        <img src={Logo} alt="Logo" className="w-28 h-28 -mt-2" />
     </a>
   </div>
   <div className="flex-auto gap-2 ">
