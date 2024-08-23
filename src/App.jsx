@@ -18,7 +18,6 @@ function App() {
       try {
         const data = await getDataFromAPI()
         setCategories(data.categories)
-        console.log(data);
       } catch (error) {
         console.log("Error fetching data : ", error);
       }
@@ -29,9 +28,7 @@ function App() {
   const handleClickCategory = (category) => {
     setTimeout(() => {
       navigate(`/category-detail/${category}`)
-      console.log(category);
     }, 2000)
-    // console.log("clicked");
   }
 
   return (

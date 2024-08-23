@@ -1,5 +1,5 @@
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import HeroImage from "../components/elements/HeroImage"
 import Navbar from "../components/elements/Navbar"
 import { useEffect, useState } from "react";
@@ -11,6 +11,7 @@ const CategoryDetail = () => {
     // mendapatkan category dari link pada laman sebelumnya
     const { category } = useParams();
     const [foods, setFood] = useState([])
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -24,6 +25,12 @@ const CategoryDetail = () => {
         fetchData()
     }, [])
 
+    const handleClickMeal = (idMeal) => {
+        setTimeout(() => {
+            navigate(`/meal-detail/${idMeal}`)
+        }, 2000)
+    }
+
     return (
         <div>
             <Navbar/>
@@ -35,7 +42,7 @@ const CategoryDetail = () => {
             <div className="px-12">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     {foods.map((food, index) => (
-                    <FoodCard key={index} image={food.strMealThumb} name={food.strMeal} />
+                    <FoodCard key={index} image={food.strMealThumb} name={food.strMeal} onClick={() => handleClickMeal(food.idMeal)} />
                     ))}
                 </div>
             </div>
