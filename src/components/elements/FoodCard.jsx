@@ -1,7 +1,12 @@
-const FoodCard = () => {
+const FoodCard = ({image, name}) => {
     return (
-        <div>
-            <img src="" alt="" className="" />
+        <div className="rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-110">
+            <img src={image} alt={name} className="w-full h-48 object-cover" />
+
+            <div className="p-3">
+                <p className="font-semibold text-lg mt-2">{name}</p>
+            </div>
+
             
         </div>
 
