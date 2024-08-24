@@ -36,7 +36,7 @@ const CategoryDetail = () => {
             <Navbar/>
             <HeroImage/>
             <div className="px-10 pb-5">
-                <h1 className="text-3xl flex justify-center items-center font-bold mt-5 ml-6 bg-orange-300 p-4 rounded-full ">{category}</h1>
+                <h1 className="text-3xl flex justify-center items-center font-bold mt-5 ml-6 bg-orange-300 p-4 rounded-full">{category}</h1>
             </div>
             
             <div className="px-12">
