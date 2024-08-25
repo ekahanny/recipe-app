@@ -4,6 +4,7 @@ import HeroImage from "../components/elements/HeroImage";
 import Navbar from "../components/elements/Navbar";
 import Footer from "../components/elements/Footer";
 import getMealsFromAPI from "../services/recipe/meals.service";
+import MealTable from "../components/elements/MealTable";
 
 const MealDetail = () => {
     const { idMeal } = useParams();
@@ -21,6 +22,10 @@ const MealDetail = () => {
         fetchData();
     }, [idMeal]);
 
+    // Memisahkan langkah-langkah instruksi
+    const instructions = meal.strInstructions
+        ? meal.strInstructions.split("\r\n").flatMap(step => step.split('. ').map(sentence => sentence.trim()).filter(sentence => sentence.length > 0))
+        : [];
 
     return (
         <>
@@ -37,7 +42,7 @@ const MealDetail = () => {
                     />
                 </div>
                 
-                <div className="flex flex-row justify-around items-center my-5 bg-orange-400 w-[480px] py-5 mx-auto rounded-lg space-x-6">
+                <div className="flex flex-row justify-around items-center my-5 bg-orange-400 w-[480px]  mx-auto rounded-lg p-5">
                     <div className="flex flex-col text-center">
                         <div className="flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mr-1">
@@ -47,6 +52,8 @@ const MealDetail = () => {
                         </div>
                         <p className="italic">{meal.strArea}</p>
                     </div>
+                    <div className="divider divider-neutral divider-horizontal"></div>
+
 
                     <div className="flex flex-col text-center">
                         <div className="flex items-center">
@@ -57,36 +64,51 @@ const MealDetail = () => {
                         </div>
                         <p className="italic">{meal.strCategory}</p>
                     </div>
+                    <div className="divider divider-neutral divider-horizontal"></div>
+
 
                     <div className="flex flex-col text-center">
                         <div className="flex items-center">
-
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mr-1">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
                             </svg>
                             <h1 className="font-semibold">Tag</h1>
                         </div>
-                        <p className="italic">{meal.strTags}</p>
+                        <p className="italic">{meal.strTags && meal.strTags.trim() !== "" ? meal.strTags : "-"}</p>
                     </div>
+
                 </div>
 
-                
+                <div className="flex flex-row justify-center px-48 mt-10 space-x-8">
+
+                    <div className="flex flex-col ">
+                        <h1 className="text-4xl font-bold mb-4">Instructions</h1>
+                        <div className="form-control">
+                            {instructions.length > 0 ? (
+                                <ol className="list-decimal list-inside">
+                                    {instructions.map((step, index) => (
+                                        <li key={index} className="mb-2">
+                                            {step}
+                                        </li>
+                                    ))}
+                                </ol>
+                            ) : (
+                                <p>No instructions available.</p>
+                            )}
+                        </div>
+                    </div>
+
+                    <MealTable meal={meal}  />
+
+
+                </div>
+
             </div>
             
             <Footer />
         </>
     );
 };
-
-
-
-
-
-
-
-
-
-
 
 export default MealDetail;
