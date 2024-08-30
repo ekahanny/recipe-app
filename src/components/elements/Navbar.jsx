@@ -1,6 +1,20 @@
+import { useEffect, useState } from "react"
 import Logo from "../../assets/my-recipes-logo.png"
 
 const Navbar = () => {
+
+  const [inputValue, setInputValue] = useState("")
+
+    const handleChange = (event) => {
+      const {value} = event.target
+      setInputValue(value)
+
+    }
+
+    useEffect(() => {
+      console.log(inputValue);
+    }, [inputValue])
+
     return (
       <div className="navbar bg-orange-300 p-5 h-[100px] flex justify-center">
         <div className="flex-1">
@@ -19,7 +33,7 @@ const Navbar = () => {
         </div>
         <div className="flex-none gap-2">
           <div className="form-control">
-            <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
+            <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" value={inputValue} onChange={handleChange} />
           </div>
         </div>
       </div>
