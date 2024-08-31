@@ -7,6 +7,7 @@ import getDetailCategory from "../services/category/detail.service";
 import FoodCard from "../components/elements/FoodCard";
 import { SearchContext } from "../context/SearchContext";
 import searchMealFromAPI from "../services/search bar/search.service";
+import Footer from "../components/elements/Footer";
 
 const CategoryDetail = () => {
     
@@ -73,6 +74,8 @@ const CategoryDetail = () => {
 
                 </div>
             </div>
+
+            <Footer/>
 
         </div>
 
