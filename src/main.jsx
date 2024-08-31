@@ -5,6 +5,7 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import CategoryDetail from './pages/CategoryDetail.jsx'
 import MealDetail from './pages/MealDetail.jsx'
+import SearchProvider from './context/SearchContext.jsx'
 
 const router = createBrowserRouter([
   {
@@ -21,8 +22,16 @@ const router = createBrowserRouter([
   }
 ])
 
+    /*
+      Bungkus dengan search provider 
+      agar data pada search context
+      dapat diakses oleh semua component
+    */ 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <SearchProvider>
+      <RouterProvider router={router} />
+    </SearchProvider>
   </React.StrictMode>,
 )

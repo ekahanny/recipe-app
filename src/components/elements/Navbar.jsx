@@ -1,43 +1,42 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Logo from "../../assets/my-recipes-logo.png"
 import searchMealFromAPI from "../../services/search bar/search.service";
+import { SearchContext } from "../../context/SearchContext";
 
 const Navbar = () => {
-  const [inputValue, setInputValue] = useState("");
-  const [searchResults, setSearchResults] = useState([]); 
+
+  // Diambil dari state global -> SearchContext
+  const { inputVal, setInputVal, setSearchRes } = useContext(SearchContext)
 
   const handleChange = (event) => {
     const { value } = event.target;
-    setInputValue(value);
+    setInputVal(value);
   };
 
-  const getSearch = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Jika input kosong, tidak melakukan apa-apa
-    if (inputValue.trim() === "") return; 
+    if (inputVal.trim() === "") return; 
 
     try {
-      const data = await searchMealFromAPI(inputValue); 
-
+      const data = await searchMealFromAPI(inputVal); 
       if (data && data.meals) {
         // Simpan hasil pencarian di state jika ada
-        setSearchResults(data.meals); 
+        setSearchRes(data.meals); 
       } else {
         // Set hasil pencarian ke array kosong jika tidak ada hasil
-        setSearchResults([]); 
+        setSearchRes([]); 
       }
     } catch (error) {
       console.error("Error fetching search results:", error);
       // Set hasil pencarian ke array kosong jika terjadi error
-      setSearchResults([]); 
+      setSearchRes([]); 
     }
-    setInputValue(""); // Reset input value setelah pencarian
-  };
+    
+    setInputVal("");
 
-  useEffect(() => {
-    console.log("Current input value:", inputValue);
-  }, [inputValue]);
+  };
 
   return (
     <div>
@@ -64,28 +63,17 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex-none gap-2">
-          <form onSubmit={getSearch}>
+          <form onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Search"
               className="input input-bordered w-24 md:w-auto"
-              value={inputValue}
+              value={inputVal}
               onChange={handleChange}
             />
           </form>
         </div>
       </div>
-
-      {/* Render Hasil Pencarian */}
-      {/* <div className="search-results grid grid-cols-1 md:grid-cols-3 gap-4 p-5">
-        {searchResults.map((meal) => (
-          <div key={meal.idMeal} className="food-card">
-            <img src={meal.strMealThumb} alt={meal.strMeal} />
-            <p>{meal.strMeal}</p>
-          </div>
-        ))}
-      </div> */}
-
     </div>
   );
 };

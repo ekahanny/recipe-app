@@ -1,13 +1,14 @@
-import { Children, createContext, useState } from "react"
+import { createContext, useState } from "react"
 
 export const SearchContext = createContext()
 
-const SearchProvider = ({children}) => {
+const SearchProvider = ({ children }) => {
     const [searchRes, setSearchRes] = useState([])
     const [inputVal, setInputVal] = useState("")
 
     return (
-        <SearchContext.Provider value={{searchRes, setSearchRes, inputVal, setInputVal}}>
+        // Mengirim 4 data yang menggunakan searchcontext
+        <SearchContext.Provider value={{ searchRes, setSearchRes, inputVal, setInputVal }}>
             {children}
         </SearchContext.Provider>
     )
