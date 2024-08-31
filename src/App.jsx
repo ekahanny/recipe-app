@@ -43,15 +43,17 @@ function App() {
     <>
       <Navbar />
       
-      <HeroImage/>
+      <section id="home">
+        <HeroImage/>
+      </section>
   
       {/* Additional Article */}
-      <div className="px-8 my-3">
+      <section id="about" className="px-8 my-3">
         <AdditionalArticle/>
-      </div>
+      </section>
       
       {/* Categories or Search Results */}
-      <div className="px-16 pb-5">
+      <div id="categories" className="px-16 pb-5">
         <h1 className="text-3xl flex justify-center items-center font-bold mt-5 ml-6 bg-orange-300 p-4 rounded-full ">
           {searchRes.length > 0 ? "Search Results" : "What to cook?"}
         </h1>
@@ -79,7 +81,9 @@ function App() {
       </div>
   
       {/* Footer */}
-      <Footer/>
+      <section id="contact">
+        <Footer/>
+      </section>
   
   
     </>

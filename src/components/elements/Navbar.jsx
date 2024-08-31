@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import Logo from "../../assets/my-recipes-logo.png"
 import searchMealFromAPI from "../../services/search bar/search.service";
 import { SearchContext } from "../../context/SearchContext";
+import { Link } from "react-scroll";
 
 const Navbar = () => {
 
@@ -42,23 +43,31 @@ const Navbar = () => {
     <div>
       <div className="navbar bg-orange-300 p-5 h-[100px] flex justify-center">
         <div className="flex-1">
-          <a className="">
+          <a href="/">
             <img src={Logo} alt="Logo" className="w-28 h-28 -mt-2" />
           </a>
         </div>
         <div className="flex-auto gap-2">
           <ul className="flex flex-row gap-6">
             <li className="btn btn-ghost text-[#E25E3E] font-bold tracking-widest">
-              HOME
+              <Link to="home" smooth={true} duration={500}>
+                HOME
+              </Link>
             </li>
             <li className="btn btn-ghost text-[#E25E3E] font-bold tracking-widest">
-              ABOUT
+              <Link to="about" smooth={true} duration={500}>
+                  ABOUT
+              </Link>
             </li>
             <li className="btn btn-ghost text-[#E25E3E] font-bold tracking-widest">
-              CATEGORIES
+              <Link to="categories" smooth={true} duration={500}>
+                  CATEGORIES
+              </Link>
             </li>
             <li className="btn btn-ghost text-[#E25E3E] font-bold tracking-widest">
-              CONTACT
+              <Link to="contact" smooth={true} duration={500}>
+                  CONTACT
+              </Link>
             </li>
           </ul>
         </div>
