@@ -57,7 +57,7 @@ function App() {
         <h1 className="text-3xl flex justify-center items-center font-bold mt-5 ml-6 bg-orange-300 p-4 rounded-full ">
           {searchRes.length > 0 ? "Search Results" : "What to cook?"}
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-4 mt-8">
+        <div className="grid md:grid-cols-4 lg:grid-cols-7 sm:grid-cols-2 sm:gap-2 gap-4 mt-8">
           {searchRes.length > 0 ? (
             searchRes.map((meal) => (
               <FoodCard

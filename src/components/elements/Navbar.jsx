@@ -47,12 +47,12 @@ const Navbar = () => {
             <img src={Logo} alt="Logo" className="w-28 h-28 -mt-2" />
           </a>
         </div>
-        <div className="flex-auto gap-2">
-          <ul className="flex flex-row gap-6">
+        <div className="flex-auto gap-2 sm:flex-none sm:gap-3">
+          <ul className="flex flex-row gap-6 sm:gap-1 md:gap-2">
             <li className="btn btn-ghost text-[#E25E3E] font-bold tracking-widest">
-              <Link to="home" smooth={true} duration={500}>
-                HOME
-              </Link>
+               <a href="/">
+                  HOME
+                </a>
             </li>
             <li className="btn btn-ghost text-[#E25E3E] font-bold tracking-widest">
               <Link to="about" smooth={true} duration={500}>

@@ -104,10 +104,10 @@ const MealDetail = () => {
 
                         </div>
 
-                        <div className="flex flex-row justify-center px-48 mt-10 space-x-8">
+                        <div className="flex flex-row justify-center px-48 mt-10 space-x-8 sm:px-0 sm:flex-col sm:items-center sm:justify-center">
 
-                            <div className="flex flex-col ">
-                                <h1 className="text-4xl font-bold mb-4">Instructions</h1>
+                            <div className="flex flex-col">
+                                <h1 className="text-4xl font-bold mb-6 sm:flex sm:justify-center sm:items-center">Instructions</h1>
                                 <div className="form-control">
                                     {instructions.length > 0 ? (
                                         <ol className="list-decimal list-inside">
@@ -122,8 +122,10 @@ const MealDetail = () => {
                                     )}
                                 </div>
                             </div>
-
-                            <MealTable meal={meal}  />
+                            
+                            <div className="mr-14">
+                                <MealTable meal={meal}  />
+                            </div>
 
 
                         </div>
